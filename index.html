@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Departamentos San Ángel · Vida Real Estate</title>
+<meta name="description" content="Solo 8 unidades disponibles. Departamentos boutique en San Ángel CDMX desde $7,000,000 MXN. Zona AAA, alta plusvalía, 119 m²."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A2540;
+  --gold:#C9A84C;
+  --gold-light:#E8C96A;
+  --cream:#FAF8F4;
+  --warm:#F2EDE4;
+  --text:#1A1A1A;
+  --muted:#6B6560;
+  --white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--cream);overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;
+  background:var(--navy);overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://www.vidarealstate.com/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.51%20PM.jpeg') center/cover no-repeat;
+  opacity:0.22;
+}
+.hero-grain{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;pointer-events:none;
+}
+.hero-gold-line{
+  position:absolute;left:0;top:0;width:3px;height:100%;
+  background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  opacity:0.6;
+}
+
+nav{
+  position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:28px 60px;border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.12em;
+  color:var(--white);text-transform:uppercase;
+}
+.nav-logo span{color:var(--gold)}
+.nav-badge{
+  font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(201,168,76,0.4);
+  padding:6px 14px;font-family:var(--sans);font-weight:400;
+}
+
+.hero-content{
+  position:relative;z-index:5;flex:1;display:flex;flex-direction:column;
+  justify-content:center;padding:80px 60px 60px;max-width:780px;
+}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--gold);font-family:var(--sans);font-weight:400;margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.hero-title{
+  font-family:var(--serif);font-size:clamp(48px,7vw,88px);font-weight:300;
+  color:var(--white);line-height:1.0;letter-spacing:-0.01em;margin-bottom:10px;
+}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-subtitle{
+  font-family:var(--serif);font-size:clamp(20px,3vw,28px);font-weight:300;
+  color:rgba(255,255,255,0.65);margin-bottom:40px;letter-spacing:0.02em;
+}
+.hero-specs{
+  display:flex;gap:32px;margin-bottom:48px;flex-wrap:wrap;
+}
+.spec{border-left:2px solid var(--gold);padding-left:16px}
+.spec-val{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--white);line-height:1}
+.spec-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:4px}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--gold);color:var(--navy);
+  font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;
+  padding:16px 36px;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;
+}
+.hero-cta:hover{background:var(--gold-light);transform:translateY(-2px)}
+.hero-cta svg{transition:transform 0.3s}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+.hero-urgency{
+  position:absolute;bottom:40px;right:60px;z-index:10;text-align:right;
+}
+.urgency-number{
+  font-family:var(--serif);font-size:72px;font-weight:300;
+  color:var(--gold);line-height:1;opacity:0.9;
+}
+.urgency-text{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+
+/* ── STRIP ── */
+.strip{
+  background:var(--gold);padding:14px 60px;
+  display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;
+}
+.strip-item{
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--navy);font-weight:500;display:flex;align-items:center;gap:8px;
+}
+.strip-dot{width:4px;height:4px;background:var(--navy);border-radius:50%;opacity:0.4}
+
+/* ── SECCIONES GENERALES ── */
+section{padding:100px 60px}
+.label{
+  font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);font-weight:400;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.label::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+h2{font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:300;color:var(--navy);line-height:1.1;margin-bottom:20px}
+h2 em{font-style:italic;color:var(--gold)}
+
+/* ── POR QUÉ SAN ÁNGEL ── */
+.porque{background:var(--white)}
+.porque-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.porque-image{position:relative}
+.porque-image img{width:100%;height:500px;object-fit:cover;display:block}
+.porque-image-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--navy);color:var(--white);padding:24px;
+  font-family:var(--serif);
+}
+.badge-val{font-size:36px;font-weight:300;color:var(--gold);line-height:1}
+.badge-lab{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;opacity:0.6;margin-top:4px}
+.porque-features{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.feature{display:flex;gap:16px;align-items:flex-start}
+.feature-icon{
+  width:36px;height:36px;border:1px solid var(--gold);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.feature-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none}
+.feature-title{font-weight:500;font-size:14px;margin-bottom:4px;color:var(--navy)}
+.feature-desc{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── GALERÍA ── */
+.galeria{background:var(--warm);padding:100px 0}
+.galeria-header{padding:0 60px;margin-bottom:48px}
+.galeria-scroll{
+  display:flex;gap:16px;overflow-x:auto;padding:0 60px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.galeria-scroll::-webkit-scrollbar{display:none}
+.galeria-img{
+  flex:0 0 420px;height:300px;object-fit:cover;display:block;
+  transition:transform 0.4s;cursor:pointer;
+}
+.galeria-img:hover{transform:scale(1.02)}
+.galeria-note{
+  padding:20px 60px 0;font-size:12px;letter-spacing:0.1em;
+  color:var(--muted);text-transform:uppercase;
+}
+
+/* ── DETALLES ── */
+.detalles{background:var(--navy);color:var(--white)}
+.detalles .label::before{background:var(--gold)}
+.detalles h2{color:var(--white)}
+.detalles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);margin-top:60px;border:1px solid rgba(255,255,255,0.08)}
+.detalle-item{padding:40px 32px;background:var(--navy)}
+.detalle-val{font-family:var(--serif);font-size:42px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.detalle-lab{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.detalle-desc{font-size:13px;color:rgba(255,255,255,0.6);margin-top:10px;line-height:1.6}
+
+/* ── FORMULARIO ── */
+.formulario{background:var(--cream);max-width:100%}
+.form-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1200px;margin:0 auto;align-items:start}
+.form-left h2{margin-bottom:16px}
+.form-left p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px}
+.form-urgency{
+  background:var(--navy);padding:24px 28px;
+  display:flex;align-items:center;gap:20px;
+}
+.fu-number{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--gold);line-height:1}
+.fu-text{font-size:12px;color:rgba(255,255,255,0.7);line-height:1.5}
+.fu-text strong{color:var(--white);display:block;font-size:14px;margin-bottom:4px}
+
+.form-box{
+  background:var(--white);padding:48px;
+  box-shadow:0 2px 40px rgba(10,37,64,0.06);
+}
+.form-box h3{
+  font-family:var(--serif);font-size:28px;font-weight:300;
+  color:var(--navy);margin-bottom:8px;
+}
+.form-box p{font-size:13px;color:var(--muted);margin-bottom:32px}
+.form-group{margin-bottom:20px}
+.form-group label{
+  display:block;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--navy);font-weight:500;margin-bottom:8px;
+}
+.form-group input,
+.form-group select{
+  width:100%;padding:14px 16px;border:1px solid #E0DAD0;background:var(--cream);
+  font-family:var(--sans);font-size:14px;color:var(--text);outline:none;
+  transition:border-color 0.2s;-webkit-appearance:none;
+}
+.form-group input:focus,
+.form-group select:focus{border-color:var(--gold)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{
+  width:100%;padding:18px;background:var(--navy);color:var(--white);border:none;
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.2em;
+  text-transform:uppercase;cursor:pointer;transition:background 0.3s;margin-top:8px;
+}
+.form-submit:hover{background:var(--gold);color:var(--navy)}
+.form-disclaimer{font-size:11px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
+
+/* ── NOSOTROS ── */
+.nosotros{background:var(--white);border-top:1px solid #EDE9E0}
+.nosotros-inner{max-width:700px;margin:0 auto;text-align:center}
+.nosotros-inner p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:40px}
+.nosotros-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid var(--navy);color:var(--navy);
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  padding:14px 32px;text-decoration:none;transition:all 0.3s;cursor:pointer;background:none;
+}
+.nosotros-cta:hover{background:var(--navy);color:var(--white)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);padding:40px 60px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;
+}
+.footer-logo{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--white);letter-spacing:0.1em}
+.footer-logo span{color:var(--gold)}
+.footer-text{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.08em}
+.footer-wa{
+  display:flex;align-items:center;gap:8px;color:var(--gold);
+  font-size:12px;letter-spacing:0.1em;text-decoration:none;
+}
+
+/* ── ANIMACIONES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeUp 0.8s 0.1s both}
+.hero-title{animation:fadeUp 0.8s 0.25s both}
+.hero-subtitle{animation:fadeUp 0.8s 0.4s both}
+.hero-specs{animation:fadeUp 0.8s 0.55s both}
+.hero-cta{animation:fadeUp 0.8s 0.7s both}
+.hero-urgency{animation:fadeUp 0.8s 0.9s both}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav,section,.strip,footer{padding-left:24px;padding-right:24px}
+  .hero-content{padding:60px 24px 40px}
+  .hero-urgency{right:24px;bottom:24px}
+  .porque-grid,.form-wrap{grid-template-columns:1fr;gap:40px}
+  .detalles-grid{grid-template-columns:1fr 1fr}
+  .galeria-scroll,.galeria-header,.galeria-note{padding-left:24px;padding-right:24px}
+  .form-box{padding:32px 24px}
+  .form-row{grid-template-columns:1fr}
+  .urgency-number{font-size:48px}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-gold-line"></div>
+
+  <nav>
+    <img src="Logo_VIDA_Real_Estate_H_2.png" alt="Vida Real Estate" style="height:38px;filter:brightness(0) invert(1);"/>
+    <div class="nav-badge">San Ángel · CDMX</div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Desarrollo Boutique Exclusivo</div>
+    <h1 class="hero-title">Vivir en<br><em>San Ángel</em></h1>
+    <p class="hero-subtitle">El sur más exclusivo de la Ciudad de México</p>
+    <div class="hero-specs">
+      <div class="spec">
+        <div class="spec-val">$7 MDP</div>
+        <div class="spec-label">Desde</div>
+      </div>
+      <div class="spec">
+        <div class="spec-val">119 m²</div>
+        <div class="spec-label">Superficie</div>
+      </div>
+      <div class="spec">
+        <div class="spec-val">2 Rec</div>
+        <div class="spec-label">Recámaras</div>
+      </div>
+      <div class="spec">
+        <div class="spec-val">AAA</div>
+        <div class="spec-label">Zona</div>
+      </div>
+    </div>
+    <button class="hero-cta" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+      Solicitar información
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div class="hero-urgency">
+    <div class="urgency-number">8</div>
+    <div class="urgency-text">Unidades<br>Disponibles</div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="strip">
+  <div class="strip-item">Entrega inmediata</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Vigilancia 24/7</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Estacionamiento techado</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Alta plusvalía histórica</div>
+  <div class="strip-dot"></div>
+  <div class="strip-item">Solo 8 de 16 disponibles</div>
+</div>
+
+<!-- ── POR QUÉ SAN ÁNGEL ── -->
+<section class="porque">
+  <div class="porque-grid">
+    <div class="porque-image">
+      <img src="https://www.vidarealstate.com/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.51%20PM%20(7).jpeg" alt="Departamento San Ángel"/>
+      <div class="porque-image-badge">
+        <div class="badge-val">+12%</div>
+        <div class="badge-lab">Plusvalía anual<br>histórica en la zona</div>
+      </div>
+    </div>
+    <div>
+      <div class="label">Por qué invertir aquí</div>
+      <h2>San Ángel,<br>una zona <em>sin igual</em></h2>
+      <p style="color:#6B6560;font-size:15px;line-height:1.8;margin-bottom:8px">
+        Zona residencial consolidada con más de un siglo de historia. 
+        Acceso inmediato a las mejores arterias del sur de CDMX, 
+        rodeada de cultura, gastronomía y naturaleza.
+      </p>
+      <div class="porque-features">
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <div class="feature-title">Desarrollo boutique de solo 16 unidades</div>
+            <div class="feature-desc">Exclusividad real. No un edificio de 200 departamentos, sino una comunidad íntima y seleccionada.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="feature-title">Acabados premium y cocina integral incluida</div>
+            <div class="feature-desc">Closets, bodega, estacionamiento techado. Listo para habitarse o rentar desde el primer día.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="feature-title">Seguridad y tranquilidad garantizadas</div>
+            <div class="feature-desc">Vigilancia 24/7 en una de las colonias más seguras y cotizadas del sur de la ciudad.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERÍA ── -->
+<section class="galeria">
+  <div class="galeria-header">
+    <div class="label">Espacios reales</div>
+    <h2>Conoce el <em>desarrollo</em></h2>
+  </div>
+  <div class="galeria-scroll">
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.53%20PM%20(8).jpeg?width=1280&height=1600" alt="Interior 1"/>
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.51%20PM%20(7).jpeg?width=1600&height=900" alt="Interior 2"/>
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.53%20PM%20(10).jpeg?width=1600&height=1200" alt="Interior 3"/>
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.52%20PM%20(3).jpeg?width=1600&height=1200" alt="Interior 4"/>
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.51%20PM%20(5).jpeg?width=1600&height=900" alt="Interior 5"/>
+    <img class="galeria-img" src="https://www.vidarealstate.com/hs-fs/hubfs/WhatsApp%20Image%202025-12-09%20at%201.51.52%20PM%20(5).jpeg?width=1600&height=900" alt="Interior 6"/>
+  </div>
+  <div class="galeria-note">Desliza para ver más espacios →</div>
+</section>
+
+<!-- ── DETALLES ── -->
+<section class="detalles">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="label">Especificaciones</div>
+    <h2>Todo lo que <em>incluye</em></h2>
+    <div class="detalles-grid">
+      <div class="detalle-item">
+        <div class="detalle-val">119</div>
+        <div class="detalle-lab">Metros cuadrados</div>
+        <div class="detalle-desc">Distribución abierta, amplia e iluminada naturalmente</div>
+      </div>
+      <div class="detalle-item">
+        <div class="detalle-val">2</div>
+        <div class="detalle-lab">Recámaras amplias</div>
+        <div class="detalle-desc">Con closets de piso a techo y excelentes acabados</div>
+      </div>
+      <div class="detalle-item">
+        <div class="detalle-val">2</div>
+        <div class="detalle-lab">Baños completos</div>
+        <div class="detalle-desc">Acabados premium en materiales de primera calidad</div>
+      </div>
+      <div class="detalle-item">
+        <div class="detalle-val">1</div>
+        <div class="detalle-lab">Estacionamiento techado</div>
+        <div class="detalle-desc">Acceso seguro y exclusivo para cada unidad</div>
+      </div>
+      <div class="detalle-item">
+        <div class="detalle-val">✓</div>
+        <div class="detalle-lab">Cocina integral incluida</div>
+        <div class="detalle-desc">Equipada y lista para usarse desde el primer día</div>
+      </div>
+      <div class="detalle-item">
+        <div class="detalle-val">24/7</div>
+        <div class="detalle-lab">Vigilancia permanente</div>
+        <div class="detalle-desc">Seguridad y control de acceso las 24 horas del día</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORMULARIO ── -->
+<section class="formulario" id="formulario">
+  <div class="form-wrap">
+    <div class="form-left">
+      <div class="label">Disponibilidad limitada</div>
+      <h2>Agenda tu <em>visita privada</em></h2>
+      <p>Nuestro equipo te contactará en menos de 2 horas para coordinar una visita personalizada al desarrollo y resolver cualquier duda sobre precios, financiamiento y disponibilidad.</p>
+      <div class="form-urgency">
+        <div class="fu-number">8</div>
+        <div class="fu-text">
+          <strong>Unidades disponibles</strong>
+          De las 16 originales, solo quedan 8.<br>La demanda es activa. No esperes.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <h3>Recibe el catálogo completo</h3>
+      <p>Precios, planos, disponibilidad y opciones de financiamiento</p>
+
+      <!-- 
+        INSTRUCCIONES DE INTEGRACIÓN HUBSPOT:
+        Reemplaza este formulario HTML con el embed code de tu formulario de HubSpot.
+        Ve a HubSpot > Marketing > Formularios > Crear formulario > Formulario embebido
+        Copia el código y pégalo aquí en lugar del formulario de abajo.
+      -->
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label>Apellido *</label>
+            <input type="text" placeholder="Tu apellido" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="tu@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp *</label>
+          <input type="tel" placeholder="+52 55 1234 5678" required/>
+        </div>
+        <div class="form-group">
+          <label>¿Cuál es tu interés?</label>
+          <select>
+            <option value="">Selecciona una opción</option>
+            <option>Vivienda personal</option>
+            <option>Inversión / renta</option>
+            <option>Ambas opciones</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>¿Cuándo puedes visitar?</label>
+          <select>
+            <option value="">Selecciona disponibilidad</option>
+            <option>Esta semana</option>
+            <option>La próxima semana</option>
+            <option>En 2-3 semanas</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Solicitar información y catálogo →</button>
+        <p class="form-disclaimer">Tu información es confidencial. No compartimos tus datos con terceros.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOSOTROS ── -->
+<section class="nosotros">
+  <div class="nosotros-inner">
+    <div class="label" style="justify-content:center">Vida Real Estate</div>
+    <h2>Compradores <em>exigentes</em>,<br>propiedades exclusivas</h2>
+    <p>Conectamos a personas que valoran la calidad de vida con las mejores propiedades residenciales de México. Un proceso seguro, transparente y personalizado de principio a fin.</p>
+    <button class="nosotros-cta" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+      Hablar con un asesor
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <img src="Logo_VIDA_Real_Estate_H_2.png" alt="Vida Real Estate" style="height:32px;filter:brightness(0) invert(1);opacity:0.85;"/>
+  <div class="footer-text">© 2026 Vida Real Estate · San Ángel, CDMX · Todos los derechos reservados</div>
+  <a href="https://wa.me/521XXXXXXXXXX" class="footer-wa">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp directo
+  </a>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  // Aquí conectarás con el formulario de HubSpot
+  alert('¡Gracias! Te contactaremos en menos de 2 horas. Pronto recibirás el catálogo completo.');
+}
+</script>
+</body>
+</html>
