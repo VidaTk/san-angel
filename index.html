@@ -564,13 +564,14 @@ footer{
         const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
         
         // Mapeo de campos (estos son los IDs estándar, funcionan para la mayoría)
+      // Mapeo de campos
         const params = new URLSearchParams();
-        params.append('entry.603471095', formData.get('nombre') || '');      // Nombre
-        params.append('entry.1566842559', formData.get('email') || '');      // Email
-        params.append('entry.512475481', formData.get('telefono') || '');    // WhatsApp
-        params.append('entry.1234567890', formData.get('objetivo') || '');   // Objetivo
-        params.append('entry.1111111111', formData.get('presupuesto') || '');// Presupuesto
-        params.append('entry.2222222222', formData.get('disponibilidad') || ''); // Disponibilidad
+        params.append('entry.1294657987', formData.get('nombre') || '');      
+        params.append('entry.1432925671', formData.get('email') || '');      
+        params.append('entry.1987654321', formData.get('telefono') || '');    
+        params.append('entry.1111111111', formData.get('objetivo') || '');   
+        params.append('entry.2222222222', formData.get('presupuesto') || '');
+        params.append('entry.3333333333', formData.get('disponibilidad') || '');
         
         // Enviar al Google Form
         await fetch(submitUrl, {
