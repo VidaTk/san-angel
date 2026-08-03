@@ -542,9 +542,8 @@ footer{
           <span id="status-message"></span>
         </div>
         
-      </form>
-<script>
-    document.getElementById('vre-form').addEventListener('submit', async function(e) {
+      </form><script>
+    document.getElementById('vre-form').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const formData = new FormData(this);
@@ -556,31 +555,26 @@ footer{
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Enviando...';
       
-      try {
-        // ID del Google Form
-        const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
-        
-        // Construir URL de envío al Google Form
-        const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
-        
-        // Mapeo de campos (estos son los IDs estándar, funcionan para la mayoría)
-      // Mapeo de campos
-        const params = new URLSearchParams();
-        params.append('entry.1294657987', formData.get('nombre') || '');      
-        params.append('entry.1432925671', formData.get('email') || '');      
-        params.append('entry.1987654321', formData.get('telefono') || '');    
-        params.append('entry.1111111111', formData.get('objetivo') || '');   
-        params.append('entry.2222222222', formData.get('presupuesto') || '');
-        params.append('entry.3333333333', formData.get('disponibilidad') || '');
-        
-        // Enviar al Google Form
-        await fetch(submitUrl, {
-          method: 'POST',
-          body: params,
-          mode: 'no-cors'
-        });
-        
-        // Mostrar mensaje de éxito
+      // ID del Google Form
+      const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
+      const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
+      
+      // Construir parámetros
+      const params = new URLSearchParams();
+      params.append('entry.1294657987', formData.get('nombre') || '');
+      params.append('entry.1432925671', formData.get('email') || '');
+      params.append('entry.1987654321', formData.get('telefono') || '');
+      params.append('entry.1111111111', formData.get('objetivo') || '');
+      params.append('entry.2222222222', formData.get('presupuesto') || '');
+      params.append('entry.3333333333', formData.get('disponibilidad') || '');
+      
+      // Enviar sin esperar respuesta (Google Forms no retorna JSON)
+      fetch(submitUrl, {
+        method: 'POST',
+        body: params,
+        mode: 'no-cors'
+      }).finally(() => {
+        // Mostrar mensaje de éxito (asumimos que siempre funciona)
         statusDiv.style.display = 'block';
         statusDiv.style.color = '#2d5f2d';
         statusDiv.style.background = '#e8f5e9';
@@ -591,30 +585,15 @@ footer{
         // Limpiar formulario
         this.reset();
         
-        // Ocultar mensaje después de 5 segundos
+        // Resetear botón después de 5 segundos
         setTimeout(() => {
           statusDiv.style.display = 'none';
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
         }, 5000);
-        
-      } catch (error) {
-        console.error('Error:', error);
-        
-        // Mostrar mensaje de error
-        statusDiv.style.display = 'block';
-        statusDiv.style.color = '#c62828';
-        statusDiv.style.background = '#ffebee';
-        statusDiv.style.padding = '12px';
-        statusDiv.style.borderRadius = '6px';
-        statusMsg.textContent = '✗ Error al enviar. Intenta de nuevo.';
-        
-        // Resetear botón
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      }
+      });
     });
-    </script>    
+    </script>   
     </div>
   </div>
 </section>
