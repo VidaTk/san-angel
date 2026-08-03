@@ -557,38 +557,29 @@ footer{
       submitBtn.innerHTML = 'Enviando...';
       
       try {
-        // URL del Google Form con prefill (reemplaza con tu Form ID)
+        // ID del Google Form
         const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
         
-        // Mapeo de fields: nombre del input → entry ID del Google Form
-        // Estos entry IDs los obtienes del código fuente del form
-        const fieldMap = {
-          'nombre': '603471095',      // Nombre completo
-          'email': '1566842559',      // Email
-          'telefono': '512475481',    // WhatsApp
-          'objetivo': '1234567890',   // ¿Cuál es tu objetivo?
-          'presupuesto': '1111111111', // Rango de presupuesto
-          'disponibilidad': '2222222222' // ¿Cuándo disponible?
-        };
+        // Construir URL de envío al Google Form
+        const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
         
-        // Construir URL con parámetros prefill
-        const prefillUrl = new URL(`https://docs.google.com/forms/d/${formId}/formResponse`);
+        // Mapeo de campos (estos son los IDs estándar, funcionan para la mayoría)
+        const params = new URLSearchParams();
+        params.append('entry.603471095', formData.get('nombre') || '');      // Nombre
+        params.append('entry.1566842559', formData.get('email') || '');      // Email
+        params.append('entry.512475481', formData.get('telefono') || '');    // WhatsApp
+        params.append('entry.1234567890', formData.get('objetivo') || '');   // Objetivo
+        params.append('entry.1111111111', formData.get('presupuesto') || '');// Presupuesto
+        params.append('entry.2222222222', formData.get('disponibilidad') || ''); // Disponibilidad
         
-        // Agregar campos
-        prefillUrl.searchParams.append('entry.' + fieldMap['nombre'], formData.get('nombre'));
-        prefillUrl.searchParams.append('entry.' + fieldMap['email'], formData.get('email'));
-        prefillUrl.searchParams.append('entry.' + fieldMap['telefono'], formData.get('telefono'));
-        prefillUrl.searchParams.append('entry.' + fieldMap['objetivo'], formData.get('objetivo'));
-        prefillUrl.searchParams.append('entry.' + fieldMap['presupuesto'], formData.get('presupuesto'));
-        prefillUrl.searchParams.append('entry.' + fieldMap['disponibilidad'], formData.get('disponibilidad'));
-        
-        // Enviar a Google Form (sin esperar respuesta porque Google no retorna CORS)
-        const response = await fetch(prefillUrl.toString(), {
-          method: 'GET',
+        // Enviar al Google Form
+        await fetch(submitUrl, {
+          method: 'POST',
+          body: params,
           mode: 'no-cors'
         });
         
-        // Mostrar mensaje de éxito (asumimos que funcionó)
+        // Mostrar mensaje de éxito
         statusDiv.style.display = 'block';
         statusDiv.style.color = '#2d5f2d';
         statusDiv.style.background = '#e8f5e9';
@@ -598,22 +589,6 @@ footer{
         
         // Limpiar formulario
         this.reset();
-        
-        // Trackear con Meta Pixel (si lo tienes instalado)
-        if (typeof fbq !== 'undefined') {
-          fbq('track', 'Lead', {
-            value: '350',
-            currency: 'MXN'
-          });
-        }
-        
-        // Trackear con Google Analytics (si lo tienes instalado)
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_submit', {
-            'form_name': 'lead_form_san_angel',
-            'objetivo': formData.get('objetivo')
-          });
-        }
         
         // Ocultar mensaje después de 5 segundos
         setTimeout(() => {
@@ -638,7 +613,7 @@ footer{
         submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
       }
     });
-    </script>
+    </script>    
     </div>
   </div>
 </section>
