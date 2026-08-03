@@ -450,10 +450,100 @@ footer{
       </div>
     </div>
 
-    <div class="form-box">
+<div class="form-box">
       <h3>Recibe el catálogo completo</h3>
       <p>Precios, planos, disponibilidad y opciones de financiamiento</p>
-      <div class="hs-form-frame" data-region="na1" data-form-id="5e118bcc-89e1-4ebd-be69-4723f159c552" data-portal-id="51544190"></div>
+      
+      <form id="vre-form" style="display:flex;flex-direction:column;gap:16px;">
+        
+        <!-- Campo 1: Nombre -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+            Nombre completo *
+          </label>
+          <input type="text" name="nombre" required 
+            style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
+        </div>
+        
+        <!-- Campo 2: Email -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+            Email *
+          </label>
+          <input type="email" name="email" required 
+            style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
+        </div>
+        
+        <!-- Campo 3: Teléfono -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+            Teléfono / WhatsApp *
+          </label>
+          <input type="tel" name="telefono" required 
+            style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
+        </div>
+        
+        <!-- Campo 4: SEGMENTACIÓN CRÍTICA - Objetivo -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:12px;font-size:14px;color:var(--navy);">
+            ¿Cuál es tu objetivo? *
+          </label>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+              <input type="radio" name="objetivo" value="Invertir" required style="cursor:pointer;accent-color:var(--gold);"/>
+              Invertir y obtener rentabilidad
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+              <input type="radio" name="objetivo" value="Vivir" required style="cursor:pointer;accent-color:var(--gold);"/>
+              Comprar para vivir
+            </label>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+              <input type="radio" name="objetivo" value="Ambos" required style="cursor:pointer;accent-color:var(--gold);"/>
+              Ambos objetivos
+            </label>
+          </div>
+        </div>
+        
+        <!-- Campo 5: Presupuesto -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+            Rango de presupuesto *
+          </label>
+          <select name="presupuesto" required 
+            style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);cursor:pointer;appearance:none;background-image:url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');background-repeat:no-repeat;background-position:right 10px center;background-size:20px;padding-right:40px;">
+            <option value="">Selecciona un rango</option>
+            <option value="$7M - $10M">$7M - $10M MXN</option>
+            <option value="$10M - $15M">$10M - $15M MXN</option>
+            <option value="$15M+">$15M+ MXN</option>
+          </select>
+        </div>
+        
+        <!-- Campo 6: Disponibilidad para visita -->
+        <div>
+          <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+            ¿Cuándo disponible para visita? *
+          </label>
+          <select name="disponibilidad" required 
+            style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);cursor:pointer;appearance:none;background-image:url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');background-repeat:no-repeat;background-position:right 10px center;background-size:20px;padding-right:40px;">
+            <option value="">Selecciona disponibilidad</option>
+            <option value="Este fin de semana">Este fin de semana</option>
+            <option value="Próxima semana">Próxima semana</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+        
+        <!-- Botón submit -->
+        <button type="submit" class="hero-cta" style="width:100%;justify-content:center;margin-top:16px;">
+          Agendar visita privada
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        
+        <!-- Mensaje de estado (éxito/error) -->
+        <div id="form-status" style="text-align:center;font-size:14px;margin-top:12px;display:none;">
+          <span id="status-message"></span>
+        </div>
+        
+      </form>
     </div>
   </div>
 </section>
