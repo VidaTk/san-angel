@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="icon" type="image/png" href="FAVICON VRE.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<script src="https://js.hsforms.net/forms/embed/51544190.js" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -544,6 +543,79 @@ footer{
         </div>
         
       </form>
+  <script>
+    document.getElementById('vre-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const statusDiv = document.getElementById('form-status');
+      const statusMsg = document.getElementById('status-message');
+      
+      // Cambiar botón a "Enviando..."
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      
+      try {
+        // URL de tu Apps Script
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwFiAjLyS2VbeA4-_xXrKzpFU5h3I72covvfjbGJpy4HqQFpqB7Am7_eBKBmqL-1LGf/exec', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          // Mostrar mensaje de éxito
+          statusDiv.style.display = 'block';
+          statusDiv.style.color = '#2d5f2d';
+          statusDiv.style.background = '#e8f5e9';
+          statusMsg.textContent = '✓ ¡Gracias! Nos pondremos en contacto en las próximas 2 horas.';
+          
+          // Limpiar formulario
+          this.reset();
+          
+          // Trackear con Meta Pixel (si lo tienes instalado)
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Lead', {
+              value: '350',
+              currency: 'MXN'
+            });
+          }
+          
+          // Trackear con Google Analytics (si lo tienes instalado)
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+              'form_name': 'lead_form_san_angel',
+              'objetivo': formData.get('objetivo')
+            });
+          }
+          
+          // Ocultar mensaje después de 5 segundos
+          setTimeout(() => {
+            statusDiv.style.display = 'none';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Agendar visita privada';
+            submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+          }, 5000);
+          
+        } else {
+          throw new Error('Error en servidor');
+        }
+      } catch (error) {
+        // Mostrar mensaje de error
+        statusDiv.style.display = 'block';
+        statusDiv.style.color = '#c62828';
+        statusDiv.style.background = '#ffebee';
+        statusMsg.textContent = '✗ Error al enviar. Intenta de nuevo.';
+        
+        // Resetear botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Agendar visita privada';
+        submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      }
+    });
+    </script>
     </div>
   </div>
 </section>
