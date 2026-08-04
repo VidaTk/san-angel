@@ -449,15 +449,140 @@ De las 16 originales, solo quedan 8.<br>La demanda es activa. No esperes.
       </div>
     </div>
 
-    <div class="form-box">
-      <h3>Recibe el catálogo completo</h3>
-      <p>Precios, planos, disponibilidad y opciones de financiamiento</p>
-      
-      <!-- Google Form embebido directamente -->
-      <iframe src="https://docs.google.com/forms/d/1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
-        Cargando…
-      </iframe>
+<div class="form-box">
+  <h3>Recibe el catálogo completo</h3>
+  <p>Precios, planos, disponibilidad y opciones de financiamiento</p>
+  
+  <form id="vre-form" style="display:flex;flex-direction:column;gap:16px;">
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+        Nombre completo *
+      </label>
+      <input type="text" name="nombre" required 
+        style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
     </div>
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+        Email *
+      </label>
+      <input type="email" name="email" required 
+        style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
+    </div>
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+        WhatsApp *
+      </label>
+      <input type="tel" name="telefono" required 
+        style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);"/>
+    </div>
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:12px;font-size:14px;color:var(--navy);">
+        ¿Cuál es tu objetivo? *
+      </label>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+          <input type="radio" name="objetivo" value="Invertir y obtener rentabilidad" required style="cursor:pointer;accent-color:var(--gold);"/>
+          Invertir y obtener rentabilidad
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+          <input type="radio" name="objetivo" value="Comprar para vivir" required style="cursor:pointer;accent-color:var(--gold);"/>
+          Comprar para vivir
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text);">
+          <input type="radio" name="objetivo" value="Ambos objetivos" required style="cursor:pointer;accent-color:var(--gold);"/>
+          Ambos objetivos
+        </label>
+      </div>
+    </div>
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+        Rango de presupuesto *
+      </label>
+      <select name="presupuesto" required 
+        style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);cursor:pointer;appearance:none;background-image:url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');background-repeat:no-repeat;background-position:right 10px center;background-size:20px;padding-right:40px;">
+        <option value="">Selecciona un rango</option>
+        <option value="$7M - $10M MXN">$7M - $10M MXN</option>
+        <option value="$10M - $15M MXN">$10M - $15M MXN</option>
+        <option value="$15M+ MXN">$15M+ MXN</option>
+      </select>
+    </div>
+    
+    <div>
+      <label style="display:block;font-weight:500;margin-bottom:8px;font-size:14px;color:var(--navy);">
+        ¿Cuándo disponible para visita? *
+      </label>
+      <select name="disponibilidad" required 
+        style="width:100%;padding:12px 15px;border:1px solid #e0e0e0;border-radius:6px;font-size:15px;font-family:var(--sans);cursor:pointer;appearance:none;background-image:url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27currentColor%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3e%3cpolyline points=%276 9 12 15 18 9%27%3e%3c/polyline%3e%3c/svg%3e');background-repeat:no-repeat;background-position:right 10px center;background-size:20px;padding-right:40px;">
+        <option value="">Selecciona disponibilidad</option>
+        <option value="Este fin de semana">Este fin de semana</option>
+        <option value="Próxima semana">Próxima semana</option>
+        <option value="Flexible">Flexible</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="hero-cta" style="width:100%;justify-content:center;margin-top:16px;">
+      Agendar visita privada
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    
+    <div id="form-status" style="text-align:center;font-size:14px;margin-top:12px;display:none;padding:12px;border-radius:6px;">
+      <span id="status-message"></span>
+    </div>
+    
+  </form>
+</div>
+
+<script>
+document.getElementById('vre-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const statusDiv = document.getElementById('form-status');
+  const statusMsg = document.getElementById('status-message');
+  
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Enviando...';
+  
+  const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
+  const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
+  
+  const params = new URLSearchParams();
+  // Entry IDs - ajustar si es necesario después del test
+  params.append('entry.1294657987', formData.get('nombre') || '');
+  params.append('entry.1432925671', formData.get('email') || '');
+  params.append('entry.1987654321', formData.get('telefono') || '');
+  params.append('entry.1111111111', formData.get('objetivo') || '');
+  params.append('entry.2222222222', formData.get('presupuesto') || '');
+  params.append('entry.3333333333', formData.get('disponibilidad') || '');
+  
+  fetch(submitUrl, {
+    method: 'POST',
+    body: params,
+    mode: 'no-cors'
+  }).finally(() => {
+    statusDiv.style.display = 'block';
+    statusDiv.style.color = '#2d5f2d';
+    statusDiv.style.background = '#e8f5e9';
+    statusDiv.style.padding = '12px';
+    statusDiv.style.borderRadius = '6px';
+    statusMsg.textContent = '✓ ¡Gracias! Nos pondremos en contacto en las próximas 2 horas.';
+    
+    this.reset();
+    
+    setTimeout(() => {
+      statusDiv.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }, 5000);
+  });
+});
+</script>
   </div>
 </section>
 <!-- ── NOSOTROS ── -->
