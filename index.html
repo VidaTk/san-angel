@@ -542,7 +542,8 @@ footer{
           <span id="status-message"></span>
         </div>
         
-      </form><script>
+      </form>
+    <script>
     document.getElementById('vre-form').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -551,7 +552,6 @@ footer{
       const statusDiv = document.getElementById('form-status');
       const statusMsg = document.getElementById('status-message');
       
-      // Cambiar botón a "Enviando..."
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Enviando...';
       
@@ -559,22 +559,20 @@ footer{
       const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
       const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
       
-      // Construir parámetros
+      // Construir parámetros - OBTÉN LOS ENTRY IDS DEL NUEVO SHEET
       const params = new URLSearchParams();
-      params.append('entry.1294657987', formData.get('nombre') || '');
-      params.append('entry.1432925671', formData.get('email') || '');
-      params.append('entry.1987654321', formData.get('telefono') || '');
-      params.append('entry.1111111111', formData.get('objetivo') || '');
-      params.append('entry.2222222222', formData.get('presupuesto') || '');
-      params.append('entry.3333333333', formData.get('disponibilidad') || '');
+      params.append('entry.ENTRADA1', formData.get('nombre') || '');      // Reemplaza ENTRADA1
+      params.append('entry.ENTRADA2', formData.get('email') || '');       // Reemplaza ENTRADA2
+      params.append('entry.ENTRADA3', formData.get('telefono') || '');    // Reemplaza ENTRADA3
+      params.append('entry.ENTRADA4', formData.get('objetivo') || '');    // Reemplaza ENTRADA4
+      params.append('entry.ENTRADA5', formData.get('presupuesto') || ''); // Reemplaza ENTRADA5
+      params.append('entry.ENTRADA6', formData.get('disponibilidad') || ''); // Reemplaza ENTRADA6
       
-      // Enviar sin esperar respuesta (Google Forms no retorna JSON)
       fetch(submitUrl, {
         method: 'POST',
         body: params,
         mode: 'no-cors'
       }).finally(() => {
-        // Mostrar mensaje de éxito (asumimos que siempre funciona)
         statusDiv.style.display = 'block';
         statusDiv.style.color = '#2d5f2d';
         statusDiv.style.background = '#e8f5e9';
@@ -582,10 +580,8 @@ footer{
         statusDiv.style.borderRadius = '6px';
         statusMsg.textContent = '✓ ¡Gracias! Nos pondremos en contacto en las próximas 2 horas.';
         
-        // Limpiar formulario
         this.reset();
         
-        // Resetear botón después de 5 segundos
         setTimeout(() => {
           statusDiv.style.display = 'none';
           submitBtn.disabled = false;
@@ -593,7 +589,7 @@ footer{
         }, 5000);
       });
     });
-    </script>   
+    </script>    
     </div>
   </div>
 </section>
