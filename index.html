@@ -552,8 +552,7 @@ document.getElementById('vre-form').addEventListener('submit', function(e) {
   const formId = '1-x3X5OglcO0j4zvTXyHZ66N-yCGktoyN3Yvew4vH_dA';
   const submitUrl = `https://docs.google.com/forms/d/${formId}/formResponse`;
   
-  const params = new URLSearchParams();
-  // Entry IDs - ajustar si es necesario después del test
+const params = new URLSearchParams();
   params.append('entry.1294657987', formData.get('nombre') || '');
   params.append('entry.1432925671', formData.get('email') || '');
   params.append('entry.1987654321', formData.get('telefono') || '');
@@ -561,11 +560,25 @@ document.getElementById('vre-form').addEventListener('submit', function(e) {
   params.append('entry.2222222222', formData.get('presupuesto') || '');
   params.append('entry.3333333333', formData.get('disponibilidad') || '');
   
-  fetch(submitUrl, {
-    method: 'POST',
-    body: params,
-    mode: 'no-cors'
-  }).finally(() => {
+  // Enviar como imagen (método alternativo que Google Forms acepta mejor)
+  const img = new Image();
+  img.src = submitUrl + '?' + params.toString();
+  
+  // Mostrar mensaje de éxito inmediatamente
+  statusDiv.style.display = 'block';
+  statusDiv.style.color = '#2d5f2d';
+  statusDiv.style.background = '#e8f5e9';
+  statusDiv.style.padding = '12px';
+  statusDiv.style.borderRadius = '6px';
+  statusMsg.textContent = '✓ ¡Gracias! Nos pondremos en contacto en las próximas 2 horas.';
+  
+  this.reset();
+  
+  setTimeout(() => {
+    statusDiv.style.display = 'none';
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Agendar visita privada<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  }, 5000);
     statusDiv.style.display = 'block';
     statusDiv.style.color = '#2d5f2d';
     statusDiv.style.background = '#e8f5e9';
