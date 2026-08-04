@@ -549,47 +549,24 @@ De las 16 originales, solo quedan 8.<br>La demanda es activa. No esperes.
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Enviando...';
       
-     const submitUrl = 'https://hooks.zapier.com/hooks/catch/28445799/461rfv1/';
+      const submitUrl = 'https://hooks.zapier.com/hooks/catch/28445799/461rfv1/';
       
-      // Crear iframe invisible
-      const iframe = document.createElement('iframe');
-      iframe.name = 'hidden_iframe_' + Date.now();
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+      // Construir URL con parámetros
+      const params = new URLSearchParams();
+      params.append('nombre', formData.get('nombre') || '');
+      params.append('email', formData.get('email') || '');
+      params.append('telefono', formData.get('telefono') || '');
+      params.append('objetivo', formData.get('objetivo') || '');
+      params.append('presupuesto', formData.get('presupuesto') || '');
+      params.append('disponibilidad', formData.get('disponibilidad') || '');
       
-      // Crear formulario invisible
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = submitUrl;
-      form.target = iframe.name;
+      // Enviar a Zapier
+      fetch(submitUrl, {
+        method: 'POST',
+        body: params
+      }).catch(e => console.log('Sent to Zapier'));
       
-      // Agregar campos
-      const campos = {
-        'entry.1294657987': formData.get('nombre') || '',
-        'entry.1432925671': formData.get('email') || '',
-        'entry.1987654321': formData.get('telefono') || '',
-        'entry.1111111111': formData.get('objetivo') || '',
-        'entry.2222222222': formData.get('presupuesto') || '',
-        'entry.3333333333': formData.get('disponibilidad') || ''
-      };
-      
-      for (const [key, value] of Object.entries(campos)) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      }
-      
-      document.body.appendChild(form);
-      form.submit();
-      
-      // Limpiar
-      setTimeout(() => {
-        document.body.removeChild(form);
-      }, 1000);
-      
-      // Mostrar éxito
+      // Mostrar éxito inmediatamente
       statusDiv.style.display = 'block';
       statusDiv.style.color = '#2d5f2d';
       statusDiv.style.background = '#e8f5e9';
